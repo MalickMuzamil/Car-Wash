@@ -1,0 +1,258 @@
+<div class="px-4">
+
+  <div class="text-center mb-3 d-flex justify-content-end" *ngIf="!CompanyId">
+    <button class="btn add-btn" data-bs-toggle="modal" data-bs-target="#selectCompanyModal">
+      Select a Company
+    </button>
+  </div>
+
+  <div class="modal fade" id="selectCompanyModal" tabindex="-1" aria-labelledby="selectCompanyModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="selectCompanyModalLabel">Select a Company</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-4 mb-3" *ngFor="let company of Services">
+              <div class="card">
+                <div class="card-body text-center">
+                  <h5 class="card-title">{{ company.company_name }}</h5>
+                  <p class="card-title">{{ company.email }}</p>
+                  <p class="card-text">{{ company.city }}</p>
+                  <button class="btn add-btn btn-sm" (click)="selectCompany(company)" data-bs-dismiss="modal">
+                    Select
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade modal-top" id="exampleModal" tabindex="-1" aria-labelledby="exampleModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered d-flex justify-content-center">
+      <div class="modal-content w-75">
+        <div class="modal-body p-4">
+          <form [formGroup]="AddService">
+
+            <div class="mb-3">
+              <label for="companyId" class="form-label">Company Name</label>
+              <select class="form-control" formControlName="companyId" (change)="selectCompany($event)">
+                <option value="" selected>Select Company Name</option>
+                @for (company of company_arr; track company) {
+                <option [value]="company?._id">{{company?.company_name}}</option>
+                }
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="category" class="form-label">Category Name</label>
+              <select class="form-control" (change)="selectCategory($event)">
+                <option value="" selected>Select Category Name</option>
+                @for (category of category_arr; track category) {
+                <option [value]="category._id">{{ category?.name }}</option>
+                }
+              </select>
+            </div>
+
+
+            <div class="mb-3">
+              <label for="serviceName" class="form-label">Service Name</label>
+              <input type="text" class="form-control" placeholder="Enter description" formControlName="serviceName"
+                [ngClass]="{ 'is-invalid': submitted && error['serviceName'].errors }" />
+
+              <div class="invalid-feedback">
+                @if (submitted && error['serviceName'].errors) {
+                @if (error['serviceName'].errors['required']) {
+                <small>Description is required.</small>
+                }
+                }
+              </div>
+
+            </div>
+            <div class="mb-3">
+              <label for="serviceDescription" class="form-label">Description</label>
+              <input type="text" class="form-control" placeholder="Enter description"
+                formControlName="serviceDescription"
+                [ngClass]="{ 'is-invalid': submitted && error['serviceDescription'].errors }" />
+
+              <div class="invalid-feedback">
+                @if (submitted && error['serviceDescription'].errors) {
+                @if (error['serviceDescription'].errors['required']) {
+                <small>Description is required.</small>
+                }
+                }
+              </div>
+
+            </div>
+
+            <div class="mb-3">
+              <label for="name" class="form-label">Price</label>
+              <input type="number" class="form-control" id="name" formControlName="servicePrice"
+                placeholder="Enter Price" [ngClass]="{ 'is-invalid': submitted && error['servicePrice'].errors }">
+
+              <div class="invalid-feedback">
+                @if (submitted && error['servicePrice'].errors) {
+                @if (error['servicePrice'].errors['required']) {
+                <small>Service Price is required.</small>
+                }
+                }
+              </div>
+
+            </div>
+
+            <div class="mb-3">
+
+              <label for="time" class="form-label">Service Time</label>
+              <select class="form-control" id="time" formControlName="serviceTime"
+                [ngClass]="{ 'is-invalid': submitted && error['serviceTime'].errors }">
+                <option value="">Select Service Time in Mins</option>
+                <option>10</option>
+                <option>20</option>
+                <option>30</option>
+                <option>40</option>
+                <option>50</option>
+                <option>60</option>
+              </select>
+
+              <div class="invalid-feedback">
+                @if (submitted && error['servicePrice'].errors) {
+                @if (error['servicePrice'].errors['required']) {
+                <small>Service Time is required.</small>
+                }
+                }
+              </div>
+            </div>
+
+
+            <button type="submit" class="btn add-btn rounded-3 px-5 fw-bold mt-4 w-100" (click)="onSubmit()">
+              Add Category
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade modal-top" id="Updateform" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered d-flex justify-content-center">
+      <div class="modal-content">
+        <div class="modal-body p-4">
+          <form (ngSubmit)="updateCompany()" [formGroup]="AddService">
+            <div class="text-center mb-4">
+              <h3 class="fw-bold text-capitalize">Update Service Information</h3>
+            </div>
+
+            <div class="auth-input my-3">
+              <label for="serviceName" class="form-label">Service Name</label>
+              <input type="text" class="form-control" id="serviceName" formControlName="serviceName"
+                placeholder="Enter Service Name" />
+
+            </div>
+
+            <div class="auth-input my-3">
+              <label for="serviceDescription" class="form-label">Description</label>
+              <input type="text" class="form-control" id="serviceDescription" formControlName="serviceDescription"
+                placeholder="Enter Description" />
+
+            </div>
+
+            <div class="auth-input my-3">
+              <label for="servicePrice" class="form-label">Service Price</label>
+              <input type="number" class="form-control" id="servicePrice" formControlName="servicePrice"
+                placeholder="Enter Price" />
+
+            </div>
+
+            <div class="mb-3">
+              <label for="serviceTime" class="form-label">Service Time</label>
+              <select class="form-control" id="serviceTime" formControlName="serviceTime">
+                <option value="">Select Service Time in Mins</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="40">40</option>
+                <option value="50">50</option>
+                <option value="60">60</option>
+              </select>
+
+            </div>
+
+            <button type="submit" class="btn add-btn rounded-3 px-5 fw-bold mt-4 w-100">
+              Update Service
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="CompanyId">
+    <div class="text-center mt-4">
+      <h2>Add Service</h2>
+    </div>
+
+    <div class="text-end mt-4">
+      <button type="button" class="btn add-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Add Services
+      </button>
+    </div>
+
+    <div class="card table-card my-3">
+      <div class="card-header">
+        <h5>Total Service</h5>
+      </div>
+      <div class="card-body px-0 py-0">
+        <div class="table-responsive">
+          <div class="session-scroll">
+            <table class="table table-hover m-b-0">
+              <thead>
+                <tr>
+                  <th><span>Company Name</span></th>
+                  <th><span>Category Name</span></th>
+                  <th><span>Service</span></th>
+                  <th><span>Description</span></th>
+                  <th><span>Price</span></th>
+                  <th><span>Time</span></th>
+                  <th><span>Actions</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (company of UpdateServices; track company; let i = $index) {
+                <tr>
+                  <td>{{company.companyName}}</td>
+                  <td>{{company.categoryName}}</td>
+                  <td>{{company.name}}</td>
+                  <td>{{company.description}}</td>
+                  <td>{{company?.price?.$numberDecimal}}</td>
+                  <td>{{company.time}}</td>
+                  <td>
+                    <button class="btn btn-primary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#Updateform"
+                      (click)="fetchServiceData(i)"><i class="fas fa-edit"></i>
+                    </button>
+
+                    <button class="btn btn-danger btn-sm" (click)="deleteCompany(company._id, company.companyId)">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                }
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

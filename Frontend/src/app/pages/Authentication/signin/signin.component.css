@@ -1,0 +1,21 @@
+.input-feilds {
+  font-size: 14px;
+  border-radius: 0;
+  border-bottom: 1px solid #000 !important;
+  outline: none;
+  box-shadow: none !important;
+}
+
+.password-icon {
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+
+.all-border-radius {
+  border-radius: 20px;
+}
+
+.custom-form {
+  background: #f8f9fa;
+}

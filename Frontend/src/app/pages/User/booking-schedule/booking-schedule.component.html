@@ -1,0 +1,26 @@
+<div class="my-5 py-2">
+    <full-calendar [options]="calendarOptions" class="m-4"></full-calendar>
+</div>
+
+<div *ngIf="showBookingForm" class="modal modal-backdrop" (click)="cancelBooking()">
+    <div class="modal-content p-3" (click)="$event.stopPropagation()">
+        <h3>Book Date: {{ selectedDate }}</h3>
+        <form>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Date</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" value="{{ selectedDate }}" readonly>
+            </div>
+
+            <div class="mb-3">
+                <label for="startTime" class="form-label">Booking Time</label>
+                <input type="time" [(ngModel)]="startTime" class="form-control" id="startTime" name="startTime"
+                    required>
+            </div>
+
+            <div class="modal-buttons mt-3">
+                <button type="submit" class="btn btn-primary me-4" (click)="confirmBooking()">Confirm Booking</button>
+                <button type="button" class="btn btn-secondary" (click)="cancelBooking()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="d-flex">
+  <app-sidebar></app-sidebar>
+  <div class="flex-grow-1">
+    <header class="p-3 bg-black d-flex align-items-center justify-content-between">
+      <button class="btn text-white" (click)="toggleSidebar()">
+        <i class="fa fa-bars fs-3"></i>
+      </button>
+    </header>
+    <div class="container-fluid py-4">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

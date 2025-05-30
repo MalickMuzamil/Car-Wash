@@ -1,0 +1,17 @@
+.bg-color-footer {
+  background: #1e2339;
+}
+
+.social-icon:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 767px) {
+  .social-icon {
+    font-size: 1.5rem;
+  }
+}
+
+a:hover {
+  color: rgba(255, 193, 7, 1) !important;
+}

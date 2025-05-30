@@ -1,0 +1,69 @@
+<div class="d-flex">
+    <aside id="sidebar" class="d-flex overflow-hidden" [class.shrink]="isShrink">
+        <div class="sidebar-logo text-center fw-bold">
+            <a href="#">CodzSword</a>
+        </div>
+        <ul class="sidebar-nav p-0">
+            <li class="sidebar-item">
+                <a routerLink="/dashboard" class="sidebar-link">
+                    <i class="fa-solid fa-gauge me-2"></i> Dashboard
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a routerLink="/add-company" class="sidebar-link">
+                    <i class="fa-solid fa-building me-2"></i> Add Company
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a routerLink="/booking" class="sidebar-link">
+                    <i class="fa-solid fa-calendar-check me-2"></i> Bookings
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a routerLink="/schedule" class="sidebar-link">
+                    <i class="fa-solid fa-clock me-2"></i> Schedule
+                </a>
+            </li>
+            
+            <li class="sidebar-item">
+                <a class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse" data-bs-target="#auth"
+                    aria-expanded="false" aria-controls="auth">
+                    <i class="fa-solid fa-plus me-2"></i> <span>Add more</span>
+                </a>
+                <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                    <li class="sidebar-item">
+                        <a routerLink="/add-category" class="sidebar-link">
+                            <i class="fa-solid fa-building me-2"></i> Add Category
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a routerLink="/add-service" class="sidebar-link">
+                            <i class="fa-solid fa-building me-2"></i> Add Service
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <div class="mt-auto m-3">
+            <hr class="text-white">
+            <div class="dropdown">
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle mt-auto"
+                    id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                    <strong>mdo</strong>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow companyheader"
+                    aria-labelledby="dropdownUser1">
+                    <li><a class="dropdown-item" routerLink="/profile"><i class="fa fa-user me-2"></i> Profile</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out-alt me-2"></i> Sign out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+    <div class="main">
+    </div>
+</div>

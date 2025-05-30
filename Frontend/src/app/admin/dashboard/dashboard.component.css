@@ -1,0 +1,12 @@
+.add-btn {
+  background-color: #000 !important;
+  color: white !important;
+}
+.card {
+  cursor: pointer;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}

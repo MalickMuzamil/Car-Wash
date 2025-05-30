@@ -1,0 +1,40 @@
+.bg-image {
+  background-size: cover;
+  position: relative;
+  border-radius: 0.5rem;
+}
+.text-primary {
+  color: #253993 !important;
+}
+@media (max-width: 1200px) {
+  .aboutus-banner-img {
+    display: none;
+  }
+}
+.aboutus-banner {
+  margin-bottom: 8rem;
+}
+.AboutUS-Card {
+  position: absolute;
+  bottom: -5rem;
+}
+@media (max-width: 575px) {
+  .AboutUS-Card {
+    position: absolute;
+    bottom: -17rem !important;
+  }
+  .our-mission {
+    margin-top: 17rem;
+  }
+  .border-end {
+    display: none;
+  }
+}
+
+.overlay-property {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("../../../../assets/images/Images/about-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}

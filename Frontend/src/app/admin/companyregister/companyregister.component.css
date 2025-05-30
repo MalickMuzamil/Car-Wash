@@ -1,0 +1,12 @@
+.add-btn {
+  background-color: #000 !important;
+  color: white  !important;
+}
+
+.card {
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px #e2e5e8;
+  border: none;
+  margin-bottom: 30px;
+  transition: all 0.5s ease-in-out;
+}

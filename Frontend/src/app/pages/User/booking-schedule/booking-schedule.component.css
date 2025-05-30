@@ -1,0 +1,27 @@
+.modal-backdrop {
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  height: 25em;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+}
+
+.fc-direction-ltr .fc-daygrid-event .fc-event-time {
+  margin-right: 3px;
+  display: none !important;
+}
+
+.fc-event-time{
+    display: none !important;
+}
+
+.fc-daygrid-event-dot {
+  display: none !important;
+}

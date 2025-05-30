@@ -1,0 +1,74 @@
+<div class="container mb-3">
+  <div class="text-center mb-3 d-flex justify-content-end" *ngIf="!selectedCompany">
+    <button class="btn add-btn" data-bs-toggle="modal" data-bs-target="#selectCompanyModal">
+      Select a Company
+    </button>
+  </div>
+
+  <div class="row justify-content-center" *ngIf="selectedCompany">
+    <h1 class="text-center mb-4">Categories</h1>
+    <div class="col-lg-12">
+      <div class="card shadow-sm">
+        <div class="card-header">
+          <h5 class="mb-0">Total Categories</h5>
+        </div>
+
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table table-hover table-bordered text-center align-middle">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Description</th>
+                  <th>Phone</th>
+                  <th>City</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ selectedCompany.company_name }}</td>
+                  <td>{{ selectedCompany.email }}</td>
+                  <td>{{ selectedCompany.description }}</td>
+                  <td>{{ selectedCompany.phone }}</td>
+                  <td>{{ selectedCompany.city }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="selectCompanyModal" tabindex="-1" aria-labelledby="selectCompanyModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="selectCompanyModalLabel">Select a Company</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-4">
+          <div class="col-md-4 col-sm-6 mb-3" *ngFor="let company of companies">
+            <div class="card d-flex flex-column h-100">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title text-center">{{ company.company_name }}</h5>
+                <p class="card-title"><strong>Email:</strong>{{ company.email }}</p>
+                <p class="card-text"><strong>City:</strong>{{ company.city }}</p>
+                <button class="btn add-btn btn-sm mt-auto" (click)="selectCompany(company)" data-bs-dismiss="modal">
+                  Select
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

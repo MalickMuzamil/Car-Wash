@@ -1,0 +1,205 @@
+<div class="px-4">
+    <div class="text-center mt-4">
+        <h2>Add Schedule</h2>
+    </div>
+    <div class="text-end mt-4">
+        <button class="btn add-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop5">
+            Add Schedule
+        </button>
+    </div>
+
+    <div class="modal fade" id="staticBackdrop5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-body p-4">
+                    <form [formGroup]="AddSchedule">
+                        <div class="text-center mb-4">
+                            <h3 class="fw-bold text-capitalize">Schedule Registration</h3>
+                        </div>
+
+                        <div class="auth-input m-2">
+                            <label for="durationType" class="form-label">Duration Type</label>
+                            <select class="form-control" id="durationType" formControlName="durationType"
+                                (change)="onDurationChange($event)">
+                                <option value="custom">Custom</option>
+                                <option value="weekly">Weekly</option>
+                            </select>
+                        </div>
+
+                        <div class="d-flex flex-row flex-wrap">
+                            <div class="auth-input m-2 flex-fill">
+                                <label for="day" class="form-label">Day</label>
+                                <select class="form-control" id="day" formControlName="day" [disabled]="isCustom">
+                                    <option value="" selected>Select a day</option>
+                                    <option value="monday">Monday</option>
+                                    <option value="tuesday">Tuesday</option>
+                                    <option value="wednesday">Wednesday</option>
+                                    <option value="thursday">Thursday</option>
+                                    <option value="friday">Friday</option>
+                                    <option value="saturday">Saturday</option>
+                                    <option value="sunday">Sunday</option>
+                                </select>
+                            </div>
+
+                            <div class="auth-input m-2 flex-fill">
+                                <label for="specificDates" class="form-label">Specific Dates</label>
+                                <input type="date" class="form-control" id="specificDates"
+                                    (change)="onSpecificDateChange($event)" [disabled]="!isCustom" />
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-row flex-wrap">
+                            <div class="auth-input m-2 flex-fill">
+                                <label for="startTime" class="form-label">Start Times</label>
+                                <input type="time" class="form-control" id="startTime"
+                                    (change)="onStartTimeChange($event)" />
+                            </div>
+
+                            <div class="auth-input m-2 flex-fill">
+                                <label for="endTime" class="form-label">End Times</label>
+                                <input type="time" class="form-control" id="endTime"
+                                    (change)="onEndTimeChange($event)" />
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn add-btn rounded-3 px-5 fw-bold mt-4 w-100"
+                            (click)="onSubmit()">
+                            Add Schedule
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="UpdateSchedule" tabindex="-1" aria-labelledby="updateScheduleLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-body p-4">
+                    <form [formGroup]="AddSchedule">
+                        <div class="text-center mb-4">
+                            <h3 class="fw-bold text-capitalize">Update Schedule</h3>
+                        </div>
+
+                        <div class="auth-input m-2">
+                            <label for="updateDurationType" class="form-label">Duration Type</label>
+                            <select class="form-control" id="updateDurationType" formControlName="durationType"
+                                (change)="onDurationChange($event)">
+                                <option value="custom">Custom</option>
+                                <option value="weekly">Weekly</option>
+                            </select>
+                        </div>
+
+                        <div class="d-flex flex-row flex-wrap">
+                            <div class="auth-input m-2 flex-fill">
+                                <label for="updateDay" class="form-label">Day</label>
+                                <select class="form-control" id="updateDay" formControlName="day" [disabled]="isCustom">
+                                    <option value="">Select a day</option>
+                                    <option value="monday">Monday</option>
+                                    <option value="tuesday">Tuesday</option>
+                                    <option value="wednesday">Wednesday</option>
+                                    <option value="thursday">Thursday</option>
+                                    <option value="friday">Friday</option>
+                                    <option value="saturday">Saturday</option>
+                                    <option value="sunday">Sunday</option>
+                                </select>
+                            </div>
+
+                            <div class="auth-input m-2 flex-fill">
+                                <label for="updateSpecificDates" class="form-label">Specific Dates</label>
+                                <input type="date" class="form-control" id="updateSpecificDates"
+                                    (change)="onSpecificDateChange($event)" [disabled]="!isCustom" />
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-row flex-wrap">
+                            <div class="auth-input m-2 flex-fill">
+                                <label for="updateStartTime" class="form-label">Start Times</label>
+                                <input type="time" class="form-control" id="updateStartTime"
+                                    (change)="onStartTimeChange($event)" />
+                            </div>
+
+                            <div class="auth-input m-2 flex-fill">
+                                <label for="updateEndTime" class="form-label">End Times</label>
+                                <input type="time" class="form-control" id="updateEndTime"
+                                    (change)="onEndTimeChange($event)" />
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn add-btn rounded-3 px-5 fw-bold mt-4 w-100"
+                            (click)="onUpdate()">
+                            Update Schedule
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="card table-card my-3">
+        <div class="card-header">
+            <h5>Total Schedules</h5>
+        </div>
+        <div class="card-body px-0 py-0">
+            <div class="table-responsive">
+                <div class="session-scroll">
+                    <table class="table table-hover m-b-0">
+                        <thead>
+                            <tr>
+                                <th><span>Duration</span></th>
+                                <th><span>Day</span></th>
+                                <th><span>Dates</span></th>
+                                <th><span>Start Times</span></th>
+                                <th><span>End Times</span></th>
+                                <th><span>Actions</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (schedule of schedules; track schedule; let i = $index) {
+                            <tr>
+                                <td>{{ schedule.duration || 'Not Available' }}</td>
+                                <td>{{ schedule.day || 'Not Available' }}</td>
+                                <td>
+                                    <span *ngIf="schedule.dates && schedule.dates.length > 0; else noDates">
+                                        {{ schedule.dates.join(', ') }}
+                                    </span>
+                                    <ng-template #noDates>Not Available</ng-template>
+                                </td>
+                                <td>
+                                    <span *ngIf="schedule.start.length > 0; else noStartTimes">
+                                        {{ schedule.start.join(', ') }}
+                                    </span>
+                                    <ng-template #noStartTimes>Not Available</ng-template>
+                                </td>
+                                <td>
+                                    <span *ngIf="schedule.end.length > 0; else noEndTimes">
+                                        {{ schedule.end.join(', ') }}
+                                    </span>
+                                    <ng-template #noEndTimes>Not Available</ng-template>
+                                </td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm me-1" data-bs-toggle="modal"
+                                        data-bs-target="#UpdateSchedule" (click)="UpdateService(schedule._id)">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+
+
+                                    <button class="btn btn-danger btn-sm" (click)="deleteService(schedule._id)">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>

@@ -1,0 +1,66 @@
+<div class="container my-5">
+
+    <div *ngIf="services.length === 0" class="row justify-content-center">
+        <div class="col-12">
+            <div class="card shadow text-center">
+                <div class="card-body">
+                    <h6 class="fw-bold text-muted">No services available</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="services.length > 0" class="text-center mb-4">
+        <h2>{{ services[0]?.companyName }}</h2>
+    </div>
+
+    <div class="row g-4" *ngIf="services.length > 0">
+        @for (service of services; track company; let i = $index){
+        <div class="col-md-4 col-sm-6 d-flex">
+            <div class="card border h-100 w-100">
+                <div class="card-body">
+                    <h5 class="fw-bold">{{ service.name }}</h5>
+                    <p class="text-muted fw-bold">Price: ${{ service.price?.$numberDecimal }}</p>
+                    <p class="text-muted fw-bold">Time: {{ service.time }}</p>
+                    <div class="d-flex justify-content-between">
+                        <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#serviceModal" (click)="onViewService(service)">
+                            View Service
+                        </button>
+
+                        <a [routerLink]="['/booking-schedule', companyId]" class="btn btn-outline-primary btn-sm"
+                            (click)="onBookingClick(service)">
+                            Booking
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>
+
+
+<div class="modal fade" id="serviceModal" tabindex="-1" aria-labelledby="serviceModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="serviceModalLabel">Service Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Name:</strong> {{ selectedService?.name }}</p>
+                <p><strong>Description:</strong> {{ selectedService?.description || 'No description available' }}</p>
+                <p><strong>Price:</strong> ${{ selectedService?.price?.$numberDecimal }}</p>
+                <p><strong>Time:</strong> {{ selectedService?.time }}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                <a [routerLink]="['/booking-schedule', companyId]" class="btn btn-primary btn-sm">
+                    Booking
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

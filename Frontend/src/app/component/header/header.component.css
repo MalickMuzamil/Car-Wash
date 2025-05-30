@@ -1,0 +1,53 @@
+.navbar {
+    margin-left: 7rem;
+    margin-right: 7rem;
+    border-radius: 3rem;
+}
+
+.logo {
+    width: 100px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.nav-link:hover {
+    color: #253993 !important;
+}
+
+
+
+@media screen and (max-width:576px) {
+    .navbar {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+}
+
+@media screen and (min-width:768px) {
+    .navbar {
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+}
+
+@media screen and (min-width:1024px) {
+    .navbar {
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+}
+
+@media screen and (min-width:1200px) {
+    .navbar {
+        margin-left: 3rem;
+        margin-right: 3rem;
+    }
+}
+
+@media screen and (min-width:1440px) {
+    .navbar {
+        margin-left: 4rem;
+        margin-right: 4rem;
+    }
+}

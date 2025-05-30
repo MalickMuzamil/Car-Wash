@@ -1,0 +1,89 @@
+<div class="container py-5 justify-content-center">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card shadow-sm mb-4 text-center">
+                <div class="card-body">
+                    <div class="position-relative d-inline-block">
+                        <img [src]="file || 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'"
+                            alt="avatar" class="rounded-circle img-fluid"
+                            style="width: 150px; height: 150px; object-fit: cover;">
+
+
+                        
+                    </div>
+
+                    <h5 class="my-3">{{ profileForm.get('fullName')?.value}}</h5>
+                    <p class="text-muted mb-1">Admin</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-8">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <form [formGroup]="profileForm">
+                        <div class="text-center mb-4">
+                            <h3 class="fw-bold text-capitalize">Update User Information</h3>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" formControlName="fullName"
+                                placeholder="Enter your Name" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" formControlName="email"
+                                placeholder="Enter your Email" />
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Phone</label>
+                                    <input type="text" class="form-control" id="phone" formControlName="phone"
+                                        placeholder="Enter your Phone Number" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="city" class="form-label">City</label>
+                                    <input type="text" class="form-control" id="city" formControlName="city"
+                                        placeholder="Enter your City" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="street" class="form-label">Street</label>
+                                    <input type="text" class="form-control" id="street" formControlName="street"
+                                        placeholder="Enter your Street" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="zip" class="form-label">Zip Code</label>
+                                    <input type="text" class="form-control" id="zip" formControlName="zip"
+                                        placeholder="Enter your Zip Code" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="uploadImage" class="form-label">Profile Image</label>
+                            <input type="file" class="form-control" id="uploadImage"
+                                (change)="handleFileSelect($event)">
+                        </div>
+
+                        <button type="submit" class="btn add-btn w-100 fw-bold" (click)="onSubmit()">Update User</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

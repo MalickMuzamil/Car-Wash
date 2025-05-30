@@ -1,0 +1,126 @@
+.custom-line {
+  font-weight: bold;
+  display: inline-block;
+  position: relative;
+}
+
+.custom-line::after {
+  content: "";
+  width: 80px;
+  height: 4px;
+  background-color: #ffd600;
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.custom-line2 {
+  font-weight: bold;
+  display: inline-block;
+  position: relative;
+}
+
+.custom-line2::after {
+  content: "";
+  width: 80px;
+  height: 4px;
+  background-color: #ffd600;
+  position: absolute;
+  bottom: -12px;
+  left: 41px;
+  transform: translateX(-50%);
+}
+
+.custom-line3 {
+  font-weight: bold;
+  display: inline-block;
+  position: relative;
+}
+
+.custom-line3::after {
+  content: "";
+  width: 612px;
+  height: 8px;
+  background-color: #ffd600;
+  position: absolute;
+  bottom: -8px;
+  left: 315px;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 1199.98px) {
+  .custom-line3::after {
+    content: "";
+    width: 422px;
+    height: 8px;
+    background-color: #ffd600;
+    position: absolute;
+    bottom: -8px;
+    left: 226px;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 991.98px) {
+  .custom-line3::after {
+    content: "";
+    width: 313px;
+    height: 8px;
+    background-color: #ffd600;
+    position: absolute;
+    bottom: -8px;
+    left: 168px;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .custom-line3::after {
+    content: "";
+    width: 364px;
+    height: 8px;
+    background-color: #ffd600;
+    position: absolute;
+    bottom: -8px;
+    left: 199px;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .custom-line3::after {
+    content: "";
+    width: 330px;
+    height: 8px;
+    background-color: #ffd600;
+    position: absolute;
+    bottom: -8px;
+    left: 175px;
+    transform: translateX(-50%);
+  }
+}
+
+.bg-overlay {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("../../../../assets/images/Images/Car-Repair-Image.avif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  color: #fff;
+}
+
+.form-container {
+  background: white;
+  color: black;
+}
+
+.card-backgorund {
+  background: #253993;
+}
+
+.circle-icon {
+  width: 100px; 
+  height: 50px;
+  background: #253993;
+}

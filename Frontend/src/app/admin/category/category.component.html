@@ -1,0 +1,251 @@
+<div class="px-4">
+    <div class="text-center mb-3 d-flex justify-content-end" *ngIf="!CompanyId">
+        <button class="btn add-btn" data-bs-toggle="modal" data-bs-target="#selectCompanyModal">
+            Select a Company
+        </button>
+    </div>
+
+    <div class="modal fade" id="selectCompanyModal" tabindex="-1" aria-labelledby="selectCompanyModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="selectCompanyModalLabel">Select a Company</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-3" *ngFor="let company of categories">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">{{ company.company_name }}</h5>
+                                    <p class="card-title">{{ company.email }}</p>
+                                    <p class="card-text">{{ company.city }}</p>
+                                    <button class="btn add-btn btn-sm" (click)="selectCompany(company)"
+                                        data-bs-dismiss="modal">
+                                        Select
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade modal-top" id="staticBackdrop5" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered d-flex justify-content-center">
+            <div class="modal-content w-75">
+                <div class="modal-body p-4">
+                    <form [formGroup]="AddCategory">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Category Name</label>
+                            <input type="text" class="form-control" id="name" name="name" formControlName="name"
+                                placeholder="Enter your Email"
+                                [ngClass]="{ 'is-invalid': submitted && error['name'].errors }" />
+
+                            <div class="invalid-feedback">
+                                @if (submitted && error['name'].errors) {
+                                @if (error['name'].errors['required']) {
+                                <small>Category Name is required.</small>
+                                }
+                                }
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <input type="text" class="form-control" id="description" name="description"
+                                formControlName="description" placeholder="Enter your Email"
+                                [ngClass]="{ 'is-invalid': submitted && error['description'].errors }" />
+
+                            <div class="invalid-feedback">
+                                @if (submitted && error['description'].errors) {
+                                @if (error['description'].errors['required']) {
+                                <small>Category Name is required.</small>
+                                }
+                                }
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="file" class="form-label">Icon</label>
+                            <input type="file" class="form-control" id="file" name="file" formControlName="file"
+                                placeholder="Enter your Email"
+                                [ngClass]="{ 'is-invalid': submitted && error['file'].errors }"
+                                (change)="handleFileSelect($event)" />
+
+                            <div class="invalid-feedback">
+                                @if (submitted && error['file'].errors) {
+                                @if (error['file'].errors['required']) {
+                                <small>Category Name is required.</small>
+                                }
+                                }
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn add-btn rounded-3 px-5 fw-bold mt-4 w-100"
+                            (click)="onSubmit()">
+                            Add Category
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade modal-top" id="ViewProduct" tabindex="-1" aria-labelledby="categoryModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered d-flex justify-content-center">
+            <div class="modal-content">
+                <div class="modal-body p-4">
+                    <div class="text-center mb-4">
+                        <h3 class="fw-bold text-capitalize">View Category Details</h3>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-7 d-flex align-items-center justify-content-center">
+                            <img [src]="selectedCategory.file" alt="Category Icon" class="img-fluid rounded shadow"
+                                style="max-width: 100%; height: auto;">
+                        </div>
+                        <div class="col-md-5">
+                            <div class="auth-input my-3">
+                                <label class="form-label fw-bold fs-5">Category Name</label>
+                                <p class="form-control-static fs-6" id="categoryName">{{ selectedCategory.name }}</p>
+                            </div>
+
+                            <div class="auth-input my-3">
+                                <label class="form-label fw-bold fs-5">Description</label>
+                                <p class="form-control-static fs-6" id="categoryDescription">{{
+                                    selectedCategory.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn add-btn rounded-3 px-5 fw-bold mt-4 w-100" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade modal-top" id="UpdateForm" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered d-flex justify-content-center">
+            <div class="modal-content">
+                <div class="modal-body p-4">
+                    <form (ngSubmit)="updateCategory()" [formGroup]="AddCategory">
+                        <div class="text-center mb-4">
+                            <h3 class="fw-bold text-capitalize">Update Category Information</h3>
+                        </div>
+
+                        <div class="auth-input my-3">
+                            <label for="name" class="form-label">Category Name</label>
+                            <input type="text" class="form-control" id="name" name="name" formControlName="name"
+                                placeholder="Enter your Service"
+                                [ngClass]="{ 'is-invalid': submitted && error['name'].errors }" />
+                            <div class="invalid-feedback">
+                                @if (submitted && error['name'].errors) {
+                                @if (error['name'].errors['required']) {
+                                <small>Category Name is required</small>
+                                }
+                                }
+                            </div>
+                        </div>
+
+                        <div class="auth-input my-3">
+                            <label for="description" class="form-label">Description</label>
+                            <input type="text" class="form-control" id="description" name="description"
+                                formControlName="description" placeholder="Enter your Email"
+                                [ngClass]="{ 'is-invalid': submitted && error['description'].errors }" />
+                            <div class="invalid-feedback">
+                                @if (submitted && error['description'].errors) {
+                                @if (error['description'].errors['required']) {
+                                <small>Description is required.</small>
+                                }
+                                }
+                            </div>
+                        </div>
+
+                        <div class="auth-input my-3">
+                            <label for="file" class="form-label">Category Icon</label>
+                            <input type="file" class="form-control" id="file" name="file" formControlName="file"
+                                (change)="handleFileSelect($event)"
+                                [ngClass]="{ 'is-invalid': submitted && error['file'].errors }" />
+                            <div class="invalid-feedback">
+                                @if (submitted && error['file'].errors) {
+                                @if (error['file'].errors['required']) {
+                                <small>File is required</small>
+                                }
+                                }
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn add-btn rounded-3 px-5 fw-bold mt-4 w-100">
+                            Update Company
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="CompanyId">
+        <div class="text-center mt-4">
+            <h2>Add Category</h2>
+        </div>
+        <div class="text-end my-4">
+            <button class="btn add-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop5">
+                Add Category
+            </button>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="card shadow-sm">
+                <div class="card-header">
+                    <h5 class="mb-0">Total Categories</h5>
+                </div>
+
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Category Name</th>
+                                    <th>Description</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (company of categories; track company; let i = $index) {
+                                <tr>
+                                    <td>{{ company.name}}</td>
+                                    <td>{{ company.description || 'No Description' }}</td>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm me-1" data-bs-toggle="modal"
+                                            data-bs-target="#UpdateForm" (click)="fetchCompanyData(i)"><i
+                                                class="fas fa-edit"></i>
+                                        </button>
+
+                                        <button class="btn btn-danger btn-sm"
+                                            (click)="deleteCompany(company._id, company.company)">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
