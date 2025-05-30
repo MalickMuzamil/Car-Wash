@@ -51,6 +51,6 @@ Angular	Node.js	Bootstrap, Yenex	Railway
 
 📫 Contact
 Made with ❤️ by MalickMuzamil
-📧 malikmuzamil92110@example.com
+📧 malikmuzamil92110@gmail.com
 🔗 LinkedIn
-📫 malikmuzamil92110@example.com
+📫 https://www.linkedin.com/in/malik-muzamil/
