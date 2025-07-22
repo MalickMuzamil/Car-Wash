@@ -1,60 +1,100 @@
-# 🚗 Car-Wash - Detail Service
+# 🚗 Car Wash - Detail Service
 
-A modern **Car Wash** application built with **Angular**, styled with **Yenex Theme** and **Bootstrap** for a sleek and responsive UI. The backend is developed using **Node.js** and deployed on **Railway** for seamless cloud hosting.
+A modern, full-stack **Car Wash & Detailing Service** application built with **Angular** for the frontend and **Node.js** for the backend. The UI is styled using the **Yenex Theme** and **Bootstrap** for a sleek, responsive design. The backend is deployed on **Railway**, providing reliable cloud infrastructure.
 
 ---
 
 ## ✨ Features
 
-- **Frontend:** Developed using Angular framework with Yenex Theme & Bootstrap for beautiful, mobile-friendly UI.
-- **Backend:** RESTful API built with Node.js for efficient service management.
-- **Deployment:** Backend hosted on Railway, ensuring fast and reliable cloud performance.
-- **Detail Service:** Comprehensive car wash and detailing service management system.
-- Responsive design for smooth experience across devices.
+- **Frontend:** Angular framework with Yenex UI theme and Bootstrap for modern, mobile-friendly interface.
+- **Backend:** RESTful API built using Node.js for managing services and customer bookings.
+- **Deployment:** Backend deployed on [Railway](https://railway.app/) for fast and scalable performance.
+- **Responsiveness:** Fully responsive design optimized for all screen sizes.
+- **Service Management:** Includes car wash, detailing services, booking logic (static/dummy), and UI routing.
+
+---
+
+## 📁 Project Structure
+
+car-wash-detail-service/
+│
+
+├── frontend/ # Angular frontend app
+
+│ ├── src/
+
+│ ├── angular.json
+
+│ └── ...
+
+│
+
+├── backend/ # Node.js backend API
+
+│ ├── index.js
+
+│ ├── package.json
+
+│ └── ...
+
+│
+
+└── README.md
 
 ---
 
 ## 🚀 Getting Started
 
-### Prerequisites
+### 🔧 Prerequisites
 
-- Node.js (for backend)
-- Angular CLI (for frontend)
-- Git
-
-### Frontend Setup
-
-  cd frontend
-  npm install
-  ng serve
-
-### Backend Setup
-The backend is already deployed on Railway, so no local setup is necessary unless you want to run locally:
-
-  cd backend
-  npm install
-  node index.js
+- [Node.js](https://nodejs.org/)
+- [Angular CLI](https://angular.io/cli)
+- [Git](https://git-scm.com/)
 
 ---
 
-🔗 **Links**
-Frontend Repo: (https://localhost/3000)
-Backend Repo:  (https://turbo-wash.up.railway.app/)
+### 💻 Frontend Setup
 
----
+1- git clone https://github.com/your-username/car-wash-detail-service.git
 
-🎨 Technologies Used
+2- cd car-wash-detail-service/frontend
+
+3- npm install
+
+4-ng serve
+
+**The app will be available at: http://localhost:4200**
+
+### ⚙️ Backend Setup
+
+The backend is already deployed on Railway.
+
+But to run locally:
+
+1- cd car-wash-detail-service/backend
+
+2- npm install
+
+3- node index.js
+
+**Local server will start at: http://localhost:3000**
+
+### 🌐 Live Links
+
+🔗 Frontend (Localhost Preview): http://localhost:4200
+
+🔗 Backend API (Live - Railway): https://turbo-wash.up.railway.app/
+
+**You can replace the localhost preview with your hosted frontend link (Netlify, Vercel, etc.)**
+
+### 🛠️ Tech Stack
+
 Frontend	Backend	Styling	Deployment
-Angular	Node.js	Bootstrap, Yenex	Railway
 
----
+Angular	Node.js	Bootstrap, Yenex Theme	Railway
 
-📫 Contact
+### 📫 Contact
 Made with ❤️ by MalickMuzamil
 
-<!--
 📧 malikmuzamil92110@gmail.com
-🔗 LinkedIn
-📫 https://www.linkedin.com/in/malik-muzamil/
-
- -->
+🔗 LinkedIn 📫 https://www.linkedin.com/in/malik-muzamil/
