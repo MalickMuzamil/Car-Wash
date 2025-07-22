@@ -77,6 +77,8 @@ But to run locally:
 
 3- node index.js
 
+---
+
 **Local server will start at: http://localhost:3000**
 
 ### 🌐 Live Links
@@ -87,11 +89,18 @@ But to run locally:
 
 **You can replace the localhost preview with your hosted frontend link (Netlify, Vercel, etc.)**
 
+
+---
+
+
 ### 🛠️ Tech Stack
 
 Frontend	Backend	Styling	Deployment
 
 Angular	Node.js	Bootstrap, Yenex Theme	Railway
+
+
+---
 
 ### 📫 Contact
 Made with ❤️ by MalickMuzamil
